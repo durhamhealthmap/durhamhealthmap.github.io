@@ -133,6 +133,9 @@ export default function AboutPage() {
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Please reach out to learn more about this site, the Durham Health Map Project, and how to get involved in community health action. Team: Monona Zhou (Project Lead, zhoumonona3@gmail.com), Chloe Balin, Bryan Conston, Justin Zou.
               </p>
+              <p className="text-gray-500 mb-6 leading-relaxed">
+                Last Updated July 21, 2025.
+              </p>
 
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
                 <p className="text-blue-800 italic">
