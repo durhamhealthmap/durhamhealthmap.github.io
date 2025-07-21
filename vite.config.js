@@ -5,7 +5,6 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/durhamhealthmap.github.io/', // Add this for GitHub Pages
   server: {
     allowedHosts: true
   },
