@@ -7,36 +7,34 @@ import React, { useEffect } from "react";
  * @param {object} props.activeCategory - The full object for the active category.
  */
 export default function MapSection({ activeCategory }) {
-  // A React hook to manage side effects. In this case, it's used to add the
-  // Tableau embedding script to the page when the component is first loaded.
   useEffect(() => {
-    // Check if the script is already on the page to avoid adding it multiple times.
-    const scriptId = "tableau-embedding-api-script";
-    if (document.getElementById(scriptId)) {
-      return; // If script exists, do nothing.
-    }
-
-    // Create a new <script> element
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.src = "https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js";
-    script.type = "module";
-
-    // Append the script to the document's body, which will load and execute it.
-    document.body.appendChild(script);
-
-    // Optional: Cleanup function to remove the script when the component is unmounted.
-    return () => {
-      const existingScript = document.getElementById(scriptId);
-      if (existingScript) {
-        document.body.removeChild(existingScript);
+    // Only inject the Tableau JS API for the mental-health embed
+    if (activeCategory && activeCategory.id === 'mental-health') {
+      const scriptId = 'tableau-embed-script-mental-health';
+      if (!document.getElementById(scriptId)) {
+        const script = document.createElement('script');
+        script.id = scriptId;
+        script.type = 'text/javascript';
+        script.innerHTML = `
+          var divElement = document.getElementById('viz1753069733987');
+          var vizElement = divElement.getElementsByTagName('object')[0];
+          if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1280px';vizElement.style.height='707px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1280px';vizElement.style.height='707px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}
+          var scriptElement = document.createElement('script');
+          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+          vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        `;
+        document.body.appendChild(script);
       }
-    };
-  }, []); // The empty array [] means this effect runs only once after the initial render.
+      return () => {
+        const script = document.getElementById(scriptId);
+        if (script) document.body.removeChild(script);
+      };
+    }
+  }, [activeCategory]);
 
   if (!activeCategory) return null;
 
-  const { title, description, icon: IconComponent, color, tableau_url } = activeCategory;
+  const { title, description, icon: IconComponent, color, tableau_url, id } = activeCategory;
 
   return (
     <div className="bg-gray-50 pb-12">
@@ -61,26 +59,29 @@ export default function MapSection({ activeCategory }) {
         {/* Tableau Map Container - Properly centered */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200 mt-6 max-w-7xl mx-auto">
           <div className="w-full min-h-[700px] p-4">
-            {/* 
-              DEVELOPER NOTE: This is the Tableau Web Component.
-              - Wrapped in a flex container to ensure proper centering
-              - Added padding to the container for better spacing
-              - The tableau-viz component now fills the container properly
-            */}
             <div className="w-full h-full flex justify-center items-center">
-              <tableau-viz 
-                id="tableauViz"       
-                src={tableau_url}
-                toolbar="bottom" 
-                hide-tabs
-                className="w-full h-full max-w-none"
-                style={{
-                  width: '100%', 
-                  height: '680px',
-                  display: 'block',
-                  margin: '0 auto'
-                }}>
-              </tableau-viz>
+              {id === 'mental-health' ? (
+                <div
+                  dangerouslySetInnerHTML={{ __html: `
+                    <div class='tableauPlaceholder' id='viz1753069733987' style='position: relative'><noscript><a href='#'><img alt='MHSA ' src='https://public.tableau.com/static/images/DH/DHM_MHSA/MHSA/1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='DHM_MHSA/MHSA' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https://public.tableau.com/static/images/DH/DHM_MHSA/MHSA/1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
+                  ` }}
+                  style={{ width: '100%' }}
+                />
+              ) : (
+                <tableau-viz 
+                  id="tableauViz"       
+                  src={tableau_url}
+                  toolbar="bottom" 
+                  hide-tabs
+                  className="w-full h-full max-w-none"
+                  style={{
+                    width: '100%', 
+                    height: '680px',
+                    display: 'block',
+                    margin: '0 auto'
+                  }}>
+                </tableau-viz>
+              )}
             </div>
           </div>
         </div>
