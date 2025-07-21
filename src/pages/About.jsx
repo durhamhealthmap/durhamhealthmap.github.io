@@ -124,6 +124,16 @@ export default function AboutPage() {
                 by category, we hope to connect more community members with the care they need.
               </p>
 
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Audience</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                The Durham Health Map is intended for use by all Durham residents, with a particular focus on underserved and at-risk communities, as well as local organizations and service providers who support public health initiatives.
+              </p>
+
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Questions about the Map?</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                Please reach out to learn more about this site, the Durham Health Map Project, and how to get involved in community health action. Team: Monona Zhou (Project Lead, zhoumonona3@gmail.com), Chloe Balin, Bryan Conston, Justin Zou.
+              </p>
+
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
                 <p className="text-blue-800 italic">
                   "Healthcare access shouldn't depend on knowing where to look. 
