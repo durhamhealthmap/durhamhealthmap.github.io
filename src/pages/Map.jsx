@@ -11,7 +11,6 @@ import {
   FileText 
 } from "lucide-react";
 
-
 // ===================================================================================
 // DEVELOPER NOTE: UPDATE TABLEAU URLS HERE
 // Each category object below has a `tableau_url`.
@@ -26,7 +25,7 @@ const categories = [
     icon: Clock,
     color: "bg-red-500",
     colorHex: "#ef4444",
-    tableau_url: "https://public.tableau.com/views/Superstore_embedded_800x800/Overview" // <-- CHANGE THIS URL
+    tableau_url: "https://public.tableau.com/app/profile/monona.zhou3766/viz/DHM_UCAH/UCAH?publish=yes"
   },
   {
     id: "uninsured",
@@ -36,7 +35,7 @@ const categories = [
     icon: CreditCard,
     color: "bg-cyan-500",
     colorHex: "#06b6d4",
-    tableau_url: "https://public.tableau.com/views/Superstore_embedded_800x800/Overview" // <-- CHANGE THIS URL
+    tableau_url: "https://public.tableau.com/app/profile/monona.zhou3766/viz/DHM_UIUI/UIUI?publish=yes"
   },
   {
     id: "safer-sex",
@@ -46,7 +45,7 @@ const categories = [
     icon: Heart,
     color: "bg-pink-500",
     colorHex: "#ec4899",
-    tableau_url: "https://public.tableau.com/views/Superstore_embedded_800x800/Overview" // <-- CHANGE THIS URL
+    tableau_url: "https://public.tableau.com/app/profile/monona.zhou3766/viz/DHM_SSSTIT/SSST?publish=yes"
   },
   {
     id: "military",
@@ -56,7 +55,7 @@ const categories = [
     icon: Shield,
     color: "bg-orange-500",
     colorHex: "#f97316",
-    tableau_url: "https://public.tableau.com/views/Superstore_embedded_800x800/Overview" // <-- CHANGE THIS URL
+    tableau_url: "https://public.tableau.com/app/profile/monona.zhou3766/viz/DHM_MV/MV?publish=yes"
   },
   {
     id: "mental-health",
@@ -66,7 +65,7 @@ const categories = [
     icon: Brain,
     color: "bg-purple-500",
     colorHex: "#a855f7",
-    tableau_url: "https://public.tableau.com/views/Superstore_embedded_800x800/Overview" // <-- CHANGE THIS URL
+    tableau_url: "https://public.tableau.com/app/profile/monona.zhou3766/viz/DHM_MHSA/MHSA?publish=yes"
   },
   {
     id: "health-program",
@@ -76,7 +75,7 @@ const categories = [
     icon: FileText,
     color: "bg-green-500",
     colorHex: "#22c55e",
-    tableau_url: "https://public.tableau.com/views/Superstore_embedded_800x800/Overview" // <-- CHANGE THIS URL
+    tableau_url: "https://public.tableau.com/app/profile/monona.zhou3766/viz/DHM_HPA/HPA?publish=yes"
   }
 ];
 
